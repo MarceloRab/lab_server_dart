@@ -88,9 +88,11 @@ packages:
   get_server:
     dependency: "direct main"
     description:
-      name: get_server
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "."
+      ref: HEAD
+      resolved-ref: f06c572144523d4d863128a18b977f86afbae45c
+      url: "https://github.com/jonataslaw/get_server"
+    source: git
     version: "0.4.0"
   glob:
     dependency: transitive
@@ -217,7 +219,7 @@ packages:
       name: pedantic
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.9.2"
+    version: "1.9.0"
   pool:
     dependency: transitive
     description:

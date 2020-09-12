@@ -11,8 +11,8 @@ class AppPages {
   static final routes = [
     //GetPage(name: Routes.HOME, page: Home2()),
     GetPage(name: '/', page: Home2()),
-    //GetPage(name: Routes.STATES, page: AllState()),
-    //GetPage(name: Routes.CITYS, page: CitysFromState()),
+    GetPage(name: Routes.STATES, page: AllState()),
+    GetPage(name: Routes.CITYS, page: CitysFromState()),
     // this not work
     //GetPage(name: '/*', page: PageNotFoud()),
   ];

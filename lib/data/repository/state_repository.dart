@@ -23,9 +23,14 @@ class Repository {
   }
 
   List<String> citysFromState(String sigla) {
+
+
+
     var state = brasil.estados.firstWhere(
         (s) => s.sigla.toLowerCase() == sigla.toLowerCase(),
         orElse: () => null);
+
+    print('TESTE state $state');
 
     return state == null ? [] : state.cidades;
   }

@@ -8,7 +8,11 @@ class CitysFromState extends GetView {
 
   @override
   Widget build(Context context) {
+    print('TESTE PARAMS ${context.param('id')}');
     final cidades = repository.citysFromState(context.param('id'));
+
+    print('TESTE CIDADE $cidades');
+
     if (cidades.isEmpty) {
       return Error404(context, 'Estado não encontrado');
       //return Text('Estado não encontrado');

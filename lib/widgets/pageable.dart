@@ -1,27 +1,29 @@
 import 'package:get_server/get_server.dart';
 
-class Pageable extends Json {
+class Pageable extends WidgetBuilder {
   List<dynamic> list;
   int page;
   int size;
 
-  Pageable(Context context, this.list, {this.page, this.size}) : super('') {
-    final _page =
-        int.parse(context.param('page') ?? '', onError: (_) => 1) ?? page;
-    final _size =
-        int.parse(context.param('size') ?? '', onError: (_) => 10) ?? size;
-    var fistElement = (_page - 1) * _size;
-    var lastElement = _page * _size;
-    var result = list.sublist(
-        fistElement, lastElement > list.length ? list.length : lastElement);
-    var pageable = _Pageable(
-        content: result,
-        currentPage: _page,
-        size: _size,
-        totalElements: list.length,
-        totalPages: (list.length / _size).ceil());
-    context.sendJson(pageable);
-  }
+  Pageable(Context context, this.list, {this.page, this.size})
+      : super(context, builder: (context) {
+          final _page =
+              int.parse(context.param('page') ?? '', onError: (_) => 1) ?? page;
+          final _size =
+              int.parse(context.param('size') ?? '', onError: (_) => 10) ??
+                  size;
+          final fistElement = (_page - 1) * _size;
+          final lastElement = _page * _size;
+          final result = list.sublist(fistElement,
+              lastElement > list.length ? list.length : lastElement);
+          final pageable = _Pageable(
+              content: result,
+              currentPage: _page,
+              size: _size,
+              totalElements: list.length,
+              totalPages: (list.length / _size).ceil());
+          return context.sendJson(pageable);
+        });
 }
 
 class _Pageable {
